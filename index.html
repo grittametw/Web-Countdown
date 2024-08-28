@@ -29,6 +29,7 @@
         let minute = 0
         let second = 0
         let count = 0
+        let roundNumber = 1
 
         startButton.addEventListener('click', function () {
             if (!timer) {
@@ -47,16 +48,28 @@
             if (!timer && stopButton.innerHTML === "Reset") {
                 resetTime()
             } else if (timer) {
-                roundTimes.innerHTML = 
-                    `<div id="time">
-                        <span class="digit">${formatTime(hour)}</span>
-                        <span class="txt">hr</span>
-                        <span class="digit">${formatTime(minute)}</span>
-                        <span class="txt">min</span>
-                        <span class="digit">${formatTime(second)}</span>
-                        <span class="txt">sec</span>
-                        <span class="digit">${formatTime(count)}</span>
+                if (roundNumber === 1){
+                    roundTimes.innerHTML = 
+                        `<div id="round">
+                            <span class="txt">Round</span>
+                            <span class="txt">time</span>
+                        </div>`
+                }
+                const newRound = 
+                    `<div>
+                        <div id="time">
+                            <span class="txt">${formatTime(roundNumber)}</span>
+                            <span class="digit">${formatTime(hour)}</span>
+                            <span class="txt">hr</span>
+                            <span class="digit">${formatTime(minute)}</span>
+                            <span class="txt">min</span>
+                            <span class="digit">${formatTime(second)}</span>
+                            <span class="txt">sec</span>
+                            <span class="digit">${formatTime(count)}</span>
+                        </div>
                     </div>`
+                    roundTimes.innerHTML = roundTimes.children[0].outerHTML + newRound + roundTimes.innerHTML.substring(roundTimes.children[0].outerHTML.length)
+                roundNumber++
             }
         })
 
@@ -118,6 +131,7 @@
             minute = 0
             second = 0
             count = 0
+            roundNumber = 1
             document.getElementById('hr').innerHTML = "00"
             document.getElementById('min').innerHTML = "00"
             document.getElementById('sec').innerHTML = "00"
