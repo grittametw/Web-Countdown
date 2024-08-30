@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Web Countdown</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div id="time">
-            <span class="digit" id="hr">00</span>
-            <span class="txt">hr</span>
-            <span class="digit" id="min">00</span>
-            <span class="txt">min</span>
-            <span class="digit" id="sec">00</span>
-            <span class="txt">sec</span>
-            <span class="digit" id="count">00</span>
+        <div class="container">
+            <div id="clock">
+                <span class="digit" id="hr">00</span>
+                <span class="txt">hr</span>
+                <span class="digit" id="min">00</span>
+                <span class="txt">min</span>
+                <span class="digit" id="sec">00</span>
+                <span class="txt">sec</span>
+                <span class="digit" id="count">00</span>
+            </div>
+            <div id="rounds">
+                <div class="rounds-header">
+                    <span class="txt">Round</span>
+                    <span class="txt time-header">Time</span>
+                </div>
+            </div>
         </div>
-        <div id="rounds"></div>
         <div id="buttons">
             <button class="count" id="stop">Round</button>
             <button class="count" id="start">Start</button>
@@ -48,16 +59,9 @@
             if (!timer && stopButton.innerHTML === "Reset") {
                 resetTime()
             } else if (timer) {
-                if (roundNumber === 1){
-                    roundTimes.innerHTML = 
-                        `<div id="round">
-                            <span class="txt">Round</span>
-                            <span class="txt">time</span>
-                        </div>`
-                }
                 const newRound = 
                     `<div>
-                        <div id="time">
+                        <div id="clock">
                             <span class="txt">${formatTime(roundNumber)}</span>
                             <span class="digit">${formatTime(hour)}</span>
                             <span class="txt">hr</span>
@@ -68,7 +72,7 @@
                             <span class="digit">${formatTime(count)}</span>
                         </div>
                     </div>`
-                    roundTimes.innerHTML = roundTimes.children[0].outerHTML + newRound + roundTimes.innerHTML.substring(roundTimes.children[0].outerHTML.length)
+                    roundTimes.innerHTML = roundTimes.children[0].outerHTML + newRound + roundTimes.innerHTML.substring(roundTimes.children[0].outerHTML.length);
                 roundNumber++
             }
         })
@@ -136,7 +140,10 @@
             document.getElementById('min').innerHTML = "00"
             document.getElementById('sec').innerHTML = "00"
             document.getElementById('count').innerHTML = "00"
-            roundTimes.innerHTML = ""
+            roundTimes.innerHTML = `<div class="rounds-header">
+                                    <span class="txt">Round</span>
+                                    <span class="txt time-header">Time</span>
+                                </div>`
         }
     </script>
 </html>

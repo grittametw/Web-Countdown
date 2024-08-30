@@ -1,0 +1,95 @@
+body {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+    position: relative;
+}
+
+#clock {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+#rounds {
+    flex: 1;
+    overflow-y: auto;
+    width: 320px;
+    margin: 24px 0;
+    border: 1px solid #ddd;
+    padding-bottom: 4px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.rounds-header {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+}
+
+
+.time-header {
+    margin-left: 90px;
+}
+
+#buttons {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    bottom: 20%;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.digit {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.txt {
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#rounds::-webkit-scrollbar {
+    width: 8px;
+}
+
+#rounds::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+#rounds::-webkit-scrollbar-thumb:hover {
+    background-color: #888;
+}
